@@ -1,0 +1,348 @@
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.blue-green"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "blue-green"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "blue-green"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    helm:
+      releaseName: blue-green
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.guestbook"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "guestbook"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "guestbook"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.helm-dependency"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "helm-dependency"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "helm-dependency"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    helm:
+      releaseName: helm-dependency
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.helm-guestbook"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "helm-guestbook"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "helm-guestbook"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    helm:
+      releaseName: helm-guestbook
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.helm-hooks"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "helm-hooks"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "helm-hooks"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.jsonnet-guestbook"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "jsonnet-guestbook"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "jsonnet-guestbook"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.jsonnet-guestbook-tla"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "jsonnet-guestbook-tla"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "jsonnet-guestbook-tla"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.kustomize-guestbook"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "kustomize-guestbook"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "kustomize-guestbook"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.plugin-kasane"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "plugin-kasane"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "plugins/kasane"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    plugin:
+      name: kasane
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.plugin-kustomized-helm"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "plugin-kustomized-helm"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "plugins/kustomized-helm"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    plugin:
+      name: kustomized-helm
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.plugin-nix"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "plugin-nix"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "plugins/nix"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+    plugin:
+      name: nix
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.pre-post-sync"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "pre-post-sync"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "pre-post-sync"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.sock-shop"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "sock-shop"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "sock-shop"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+# Source: applications/templates/applications.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.sync-waves"
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "sync-waves"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "sync-waves"
+    repoURL: https://github.com/liam-mackie/argocd-example-apps
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
