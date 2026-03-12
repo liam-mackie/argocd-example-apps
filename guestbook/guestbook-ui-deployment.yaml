@@ -14,7 +14,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-        - image: liammackie/gb-frontend:1
+        - image: liammackieoctopus/gb-frontend:1
           name: guestbook-ui
           ports:
             - containerPort: 80
