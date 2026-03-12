@@ -28,6 +28,8 @@ spec:
         env:
         - name: SESSION_REDIS
           value: "true"
+        - name: OCTOPUS_ENVIRONMENT
+          value: "#{{Octopus.Environment.Name}}"
         securityContext:
           runAsNonRoot: true
           runAsUser: 10001
