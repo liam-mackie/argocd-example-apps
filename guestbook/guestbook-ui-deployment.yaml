@@ -14,7 +14,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-        - image: liammackieoctopus/gb-frontend:v6
+        - image: harbor.octolocal.dev/gb-frontend:v1
           name: guestbook-ui
           ports:
             - containerPort: 80
