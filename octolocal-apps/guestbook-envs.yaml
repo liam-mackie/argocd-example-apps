@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.guestbook-test"
+  namespace: argocd
+  annotations:
+    argo.octopus.com/project: "guestbook"
+    argo.octopus.com/environment: "test"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "guestbook-test"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "guestbook-test"
+    repoURL: https://gitlab.octolocal.dev/root/argocd-example-apps.git
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "example.guestbook-production"
+  namespace: argocd
+  annotations:
+    argo.octopus.com/project: "guestbook"
+    argo.octopus.com/environment: "production"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: "guestbook-production"
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: "guestbook-production"
+    repoURL: https://gitlab.octolocal.dev/root/argocd-example-apps.git
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
